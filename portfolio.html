@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neeraj Bisht | Neeraj Portfolio</title>
+    <meta name="description"
+        content="Professional portfolio of Neeraj Bisht, a B.Tech Cybersecurity student focused on SOC operations, blue team practices, network security, and CTF problem solving." />
+
+    <style>
+        :root {
+            --bg: #040a13;
+            --bg-2: #07111f;
+            --panel: #0a1728;
+            --panel-2: #0d1f35;
+            --text: #e9f3ff;
+            --muted: #91a8c4;
+            --cyan: #39d5ff;
+            --cyan-soft: rgba(57, 213, 255, 0.14);
+            --green: #5ef2b5;
+            --line: rgba(57, 213, 255, 0.18);
+            --line-soft: rgba(255, 255, 255, 0.07);
+            --shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+            --radius: 18px;
+            --container: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(57, 213, 255, 0.028) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 213, 255, 0.028) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 0%, rgba(57, 213, 255, 0.13), transparent 34%),
+                radial-gradient(circle at 100% 28%, rgba(94, 242, 181, 0.07), transparent 32%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* ---------- Header ---------- */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(4, 10, 19, 0.78);
+            border-bottom: 1px solid var(--line-soft);
+            backdrop-filter: blur(18px);
+        }
+
+        .header-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(57, 213, 255, 0.42);
+            border-radius: 12px;
+            color: var(--cyan);
+            background: linear-gradient(145deg, rgba(57, 213, 255, 0.16), rgba(57, 213, 255, 0.03));
+            box-shadow: 0 0 28px rgba(57, 213, 255, 0.12);
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+        }
+
+        .brand-text {
+            font-size: 0.98rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-menu a {
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--cyan);
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.2s ease;
+            border-radius: 999px;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            height: 2px;
+            margin: 5px 0;
+            background: var(--cyan);
+            border-radius: 2px;
+            transition: 0.25s ease;
+        }
+
+        /* ---------- Shared section styles ---------- */
+
+        .section {
+            padding: 96px 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: linear-gradient(180deg, transparent, rgba(10, 23, 40, 0.5), transparent);
+            border-top: 1px solid rgba(255, 255, 255, 0.035);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.74rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-head {
+            max-width: 760px;
+            margin-bottom: 44px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            letter-spacing: -0.035em;
+            margin-bottom: 14px;
+        }
+
+        .section-head p:not(.eyebrow) {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        /* ---------- Hero ---------- */
+
+        .hero {
+            min-height: calc(100vh - 76px);
+            display: flex;
+            align-items: center;
+            padding: 86px 0 72px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+            gap: 54px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 7vw, 5.1rem);
+            line-height: 0.98;
+            letter-spacing: -0.065em;
+            margin-bottom: 20px;
+        }
+
+        .hero-role {
+            color: var(--cyan);
+            font-weight: 700;
+            font-size: clamp(0.95rem, 2vw, 1.12rem);
+            margin-bottom: 20px;
+        }
+
+        .hero-summary {
+            color: var(--muted);
+            max-width: 620px;
+            font-size: 1.02rem;
+            margin-bottom: 28px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .hero-badges span,
+        .tags span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 5px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(57, 213, 255, 0.2);
+            background: rgba(57, 213, 255, 0.06);
+            color: #bceeff;
+            font-size: 0.78rem;
+            font-weight: 650;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #36d8ff, #25a9c9);
+            color: #03101b;
+            box-shadow: 0 12px 36px rgba(57, 213, 255, 0.22);
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--line);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(57, 213, 255, 0.48);
+            box-shadow: 0 0 30px rgba(57, 213, 255, 0.08);
+        }
+
+        /* Terminal */
+
+        .terminal-card {
+            border: 1px solid rgba(57, 213, 255, 0.22);
+            border-radius: 18px;
+            background: linear-gradient(180deg, #0a1728, #07111f);
+            box-shadow: var(--shadow), 0 0 70px rgba(57, 213, 255, 0.06);
+            overflow: hidden;
+            transform: rotate(0.5deg);
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 0 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .terminal-bar span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff6b6b;
+        }
+
+        .terminal-bar span:nth-child(2) {
+            background: #ffd66b;
+        }
+
+        .terminal-bar span:nth-child(3) {
+            background: var(--green);
+        }
+
+        .terminal-bar p {
+            margin-left: auto;
+            color: var(--muted);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.72rem;
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.86rem;
+            color: #cfe8ff;
+        }
+
+        .terminal-body p {
+            margin-bottom: 9px;
+        }
+
+        .prompt {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .terminal-output {
+            color: var(--muted);
+            margin-bottom: 20px !important;
+            padding-left: 14px;
+            border-left: 2px solid rgba(57, 213, 255, 0.25);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--cyan);
+            vertical-align: -2px;
+            margin-left: 2px;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ---------- About ---------- */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .about-card,
+        .quick-facts,
+        .skill-card,
+        .lab-card,
+        .focus-card,
+        .education-card,
+        .contact-item {
+            border: 1px solid var(--line-soft);
+            background: linear-gradient(180deg, rgba(13, 31, 53, 0.78), rgba(10, 23, 40, 0.72));
+            border-radius: var(--radius);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.16);
+        }
+
+        .about-card {
+            padding: 32px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quick-facts {
+            padding: 22px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .fact {
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(57, 213, 255, 0.035);
+            border: 1px solid rgba(57, 213, 255, 0.08);
+        }
+
+        .fact span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 3px;
+        }
+
+        .fact strong {
+            font-size: 0.92rem;
+            color: #dff5ff;
+        }
+
+        /* ---------- Skills ---------- */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 26px;
+            transition: transform 0.22s ease, border-color 0.22s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(57, 213, 255, 0.28);
+        }
+
+        .skill-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--cyan-soft);
+            color: var(--cyan);
+            font-weight: 900;
+            font-family: "SFMono-Regular", Consolas, monospace;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.04rem;
+            margin-bottom: 9px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* ---------- CTF / Labs ---------- */
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 22px;
+        }
+
+        .lab-card,
+        .focus-card {
+            padding: 30px;
+        }
+
+        .lab-card h3,
+        .focus-card h3 {
+            font-size: 1.24rem;
+            margin-bottom: 12px;
+        }
+
+        .lab-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .check-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--green);
+            font-weight: 900;
+        }
+
+        .focus-card {
+            background:
+                radial-gradient(circle at 100% 0%, rgba(57, 213, 255, 0.12), transparent 40%),
+                linear-gradient(180deg, rgba(13, 31, 53, 0.88), rgba(10, 23, 40, 0.76));
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .focus-list li {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(57, 213, 255, 0.1);
+            background: rgba(255, 255, 255, 0.025);
+            color: #cfe8ff;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        /* ---------- Education ---------- */
+
+        .education-card {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            max-width: 820px;
+        }
+
+        .edu-icon {
+            flex: 0 0 auto;
+            width: 64px;
+            height: 64px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            border: 1px solid rgba(57, 213, 255, 0.24);
+            background: var(--cyan-soft);
+            color: var(--cyan);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+        }
+
+        .education-card h3 {
+            font-size: 1.18rem;
+            margin-bottom: 4px;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        .education-card .muted {
+            color: var(--cyan);
+            font-size: 0.86rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* ---------- Contact ---------- */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+            gap: 34px;
+            align-items: start;
+        }
+
+        .contact-copy p:not(.eyebrow) {
+            color: var(--muted);
+            max-width: 480px;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(57, 213, 255, 0.3);
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--cyan-soft);
+            color: var(--cyan);
+        }
+
+        .contact-icon svg {
+            width: 19px;
+            height: 19px;
+            fill: currentColor;
+        }
+
+        .contact-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 2px;
+        }
+
+        .contact-item strong {
+            font-size: 0.92rem;
+            overflow-wrap: anywhere;
+            color: #e5f8ff;
+        }
+
+        /* ---------- Footer ---------- */
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 28px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        .footer strong {
+            color: var(--cyan);
+        }
+
+        /* ---------- Responsive ---------- */
+
+        @media (max-width: 920px) {
+
+            .hero-grid,
+            .about-grid,
+            .lab-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 70px;
+            }
+
+            .terminal-card {
+                transform: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 76px;
+                left: 20px;
+                right: 20px;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 12px;
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.98);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                width: 100%;
+                padding: 12px 14px;
+                border-radius: 9px;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: rgba(57, 213, 255, 0.07);
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .section {
+                padding: 74px 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(var(--container), calc(100% - 28px));
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 0.78rem;
+            }
+
+            .about-card,
+            .lab-card,
+            .focus-card,
+            .education-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#home" class="brand" aria-label="Neeraj Bisht home">
+                <span class="brand-mark">NB</span>
+                <span class="brand-text">Neeraj Bisht</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu" aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#labs">CTF & Labs</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="eyebrow">Neeraj Portfolio</p>
+                    <h1>Neeraj Bisht</h1>
+                    <p class="hero-role">
+                        Cybersecurity Enthusiast · SOC Analyst Aspirant · Blue Team
+                    </p>
+                    <p class="hero-summary">
+                        A second-year B.Tech Cybersecurity student at Quantum University with a strong
+                        interest in security monitoring, network analysis, and blue team operations.
+                        I enjoy investigating how systems behave, analyzing network traffic, and solving
+                        CTF challenges to strengthen my practical understanding of cybersecurity.
+                    </p>
+
+                    <div class="hero-badges" aria-label="Key skills">
+                        <span>CTF Solver</span>
+                        <span>Wireshark</span>
+                        <span>Nmap</span>
+                        <span>Burp Suite</span>
+                        <span>Python</span>
+                        <span>Linux</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#skills" class="btn btn-primary">Explore Skills</a>
+                        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+                    </div>
+                </div>
+
+                <div class="terminal-card" aria-label="Terminal-style profile summary">
+                    <div class="terminal-bar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p>neeraj@cyber:~</p>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> whoami</p>
+                        <p class="terminal-output">Neeraj Bisht</p>
+
+                        <p><span class="prompt">$</span> role</p>
+                        <p class="terminal-output">Cybersecurity Enthusiast | SOC &amp; Blue Team</p>
+
+                        <p><span class="prompt">$</span> focus</p>
+                        <p class="terminal-output">Detection · Analysis · Network Security · CTF</p>
+
+                        <p><span class="prompt">$</span> education</p>
+                        <p class="terminal-output">B.Tech Cybersecurity — 2nd Year</p>
+
+                        <p><span class="prompt">$</span> status</p>
+                        <p class="terminal-output">Learning, building, and improving<span class="cursor"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">About Me</p>
+                    <h2>Security-minded. Curious. Practical.</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card">
+                        <p>
+                            I am a second-year B.Tech Cybersecurity student at Quantum University,
+                            Saharanpur, with a growing focus on SOC operations and blue team practices.
+                            My interest lies in understanding how attacks unfold, how network traffic
+                            can reveal suspicious activity, and how security teams can detect and
+                            respond to threats effectively.
+                        </p>
+                        <p>
+                            I work with tools such as Wireshark, Nmap, Burp Suite, Python, and Linux to
+                            build practical skills through hands-on learning. I also enjoy solving CTF
+                            challenges because they help me think critically, investigate problems, and
+                            learn from real-world-style security scenarios.
+                        </p>
+                        <p>
+                            I am looking for opportunities to learn from experienced professionals,
+                            contribute to security-focused work, and grow into a capable SOC or blue
+                            team professional.
+                        </p>
+                    </div>
+
+                    <div class="quick-facts" aria-label="Quick facts">
+                        <div class="fact">
+                            <span>Location</span>
+                            <strong>Saharanpur, India</strong>
+                        </div>
+                        <div class="fact">
+                            <span>Education</span>
+                            <strong>B.Tech Cybersecurity — 2nd Year</strong>
+                        </div>
+                        <div class="fact">
+                            <span>Focus</span>
+                            <strong>SOC · Blue Team · Network Security</strong>
+                        </div>
+                        <div class="fact">
+                            <span>Mindset</span>
+                            <strong>Learn · Analyze · Improve</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Technical Toolkit</p>
+                    <h2>Skills & Hands-on Tools</h2>
+                    <p>
+                        Practical areas I am developing through academic learning, CTF challenges,
+                        and self-driven cybersecurity practice.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+                    <article class="skill-card">
+                        <div class="skill-icon">01</div>
+                        <h3>Network Analysis & Reconnaissance</h3>
+                        <p>
+                            Understanding network behavior, identifying hosts and services, and
+                            inspecting packet-level traffic for security insights.
+                        </p>
+                        <div class="tags">
+                            <span>Wireshark</span>
+                            <span>Nmap</span>
+                            <span>Traffic Analysis</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">02</div>
+                        <h3>Web Security Testing</h3>
+                        <p>
+                            Exploring web application behavior, request/response analysis, and common
+                            security testing workflows in controlled environments.
+                        </p>
+                        <div class="tags">
+                            <span>Burp Suite</span>
+                            <span>HTTP Basics</span>
+                            <span>Web Security</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">03</div>
+                        <h3>Scripting & Automation</h3>
+                        <p>
+                            Using Python to build small utilities, automate repetitive tasks, and
+                            strengthen problem-solving through code.
+                        </p>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>Scripting</span>
+                            <span>Automation</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">04</div>
+                        <h3>Linux & Systems</h3>
+                        <p>
+                            Working with Linux environments, command-line tools, and foundational
+                            system concepts relevant to security operations.
+                        </p>
+                        <div class="tags">
+                            <span>Linux</span>
+                            <span>Command Line</span>
+                            <span>System Basics</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">05</div>
+                        <h3>Blue Team Mindset</h3>
+                        <p>
+                            Developing an analytical approach to security: observing, investigating,
+                            documenting, and improving based on findings.
+                        </p>
+                        <div class="tags">
+                            <span>SOC Interest</span>
+                            <span>Analysis</span>
+                            <span>Documentation</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <div class="skill-icon">06</div>
+                        <h3>CTF & Problem Solving</h3>
+                        <p>
+                            Solving CTF-style challenges to practice investigation, reasoning, and
+                            practical use of cybersecurity tools.
+                        </p>
+                        <div class="tags">
+                            <span>CTF Solver</span>
+                            <span>Research</span>
+                            <span>Critical Thinking</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTF / LABS -->
+        <section id="labs" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Practical Learning</p>
+                    <h2>CTF & Hands-on Practice</h2>
+                    <p>
+                        Building practical cybersecurity understanding through challenges, labs,
+                        and consistent tool-based exploration.
+                    </p>
+                </div>
+
+                <div class="lab-grid">
+                    <div class="lab-card">
+                        <h3>CTF Solver & Active Learner</h3>
+                        <p>
+                            I actively use CTF challenges as a way to practice security concepts,
+                            improve investigation skills, and become more comfortable with the tools
+                            used in real security workflows.
+                        </p>
+                        <ul class="check-list">
+                            <li>Analyzing network traffic and packet behavior with Wireshark.</li>
+                            <li>Using Nmap for host discovery and service enumeration in lab environments.</li>
+                            <li>Exploring web requests and application behavior with Burp Suite.</li>
+                            <li>Writing Python scripts for small security-related tasks and automation.</li>
+                            <li>Working in Linux environments and improving command-line confidence.</li>
+                        </ul>
+                    </div>
+
+                    <aside class="focus-card">
+                        <h3>Current Focus</h3>
+                        <p>
+                            Developing the foundation needed for SOC analysis and blue team roles.
+                        </p>
+                        <ul class="focus-list">
+                            <li>Security monitoring fundamentals</li>
+                            <li>Network traffic analysis</li>
+                            <li>Investigating suspicious behavior</li>
+                            <li>CTF-based problem solving</li>
+                            <li>Linux and Python practice</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="section section-alt">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Education</p>
+                    <h2>Academic Background</h2>
+                </div>
+
+                <div class="education-card">
+                    <div class="edu-icon">QU</div>
+                    <div>
+                        <h3>B.Tech in Cybersecurity</h3>
+                        <p>Quantum University</p>
+                        <p class="muted">Currently in Second Year</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <div class="container contact-grid">
+                <div class="contact-copy">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Let’s Connect</h2>
+                    <p>
+                        I am open to learning opportunities, cybersecurity internships, and
+                        conversations around SOC operations, blue team practices, and practical
+                        security learning.
+                    </p>
+                </div>
+
+                <div class="contact-list">
+                    <a class="contact-item" href="mailto:neerajbisht.eh@gmail.com">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <span>Email</span>
+                            <strong>neerajbisht.eh@gmail.com</strong>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="https://www.linkedin.com/in/neeraj-bisht-21207b404" target="_blank"
+                        rel="noopener noreferrer">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M4.98 3.5A2.49 2.49 0 1 0 5 8.48a2.49 2.49 0 0 0-.02-4.98ZM3 9h4v12H3V9Zm6 0h3.83v1.64h.06c.53-.95 1.84-1.96 3.79-1.96 4.05 0 4.8 2.67 4.8 6.14V21h-4v-5.45c0-1.3-.02-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.89V21H9V9Z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <span>LinkedIn</span>
+                            <strong>linkedin.com/in/neeraj-bisht-21207b404</strong>
+                        </div>
+                    </a>
+
+                    <div class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <span>Location</span>
+                            <strong>Saharanpur, India</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> <strong>Neeraj Bisht</strong>. All rights reserved.</p>
+            <p>Neeraj Portfolio · SOC & Blue Team Focus</p>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const navLinks = document.querySelectorAll(".nav-menu a");
+        const sections = document.querySelectorAll("section[id]");
+
+        navToggle.addEventListener("click", () => {
+            const isOpen = navMenu.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        window.addEventListener("scroll", () => {
+            let currentSection = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 130;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSection}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
